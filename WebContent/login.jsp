@@ -85,7 +85,7 @@
 					<input type="text"     placeholder="Username..." id="username" name="username" onkeydown="r()"/>
 					<input type="password" placeholder="Password..." id="password" name="password" onkeydown="r()"/>
 					<button type="button" onclick="validation()"> Login </button>
-					<h5 id="wrong" style="text-align: center; color: red" hidden> Wrong Username / Password</h5>
+					<h5 id="wrong" style="text-align: center; color: red" hidden=""s> Wrong Username / Password</h5>
 				</div>
 			</div>
 		</form>

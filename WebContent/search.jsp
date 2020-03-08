@@ -240,7 +240,7 @@
                     ResultSet location_result = location_statement.executeQuery(location_query);
 					location_result.next();
                     
-                    putHTML +=  "<p >" + location_result.getString("Location") + "</p>";
+                    putHTML +=  "<p>" + location_result.getString("Location") + "</p>";
 
                     String tags_query = "select tag_name from tags where book_id = " + rs.getInt("book_id") + " limit 4";
                     Statement tag_statement = conn.createStatement();
