@@ -15,7 +15,7 @@ delimiter \\
         in room integer,
         in section varchar(30),
         in shelf integer,
-        in tags varchar(30)
+        in tags varchar(200)
         
     )   
     

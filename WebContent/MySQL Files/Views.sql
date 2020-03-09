@@ -17,5 +17,7 @@ create view `Book_Description` as
         location.shelf 		as `Shelf`,
         (select group_concat(tag) from tags where book_id = book.id) as `Tags`
 	from 
-		book join location on (id);
+		book, location
+	where
+		book.id = location.book_id;
         

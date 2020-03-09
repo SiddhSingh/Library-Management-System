@@ -75,10 +75,13 @@ public class DBModel implements DBOperations{
 	}
 
 	@Override
-	public String getBooksInJSON(String bookName) {
+	public String getBooksInJSON(String word) {
 		// TODO Auto-generated method stub
 		Connection c = getConnection();
-		String query = "select * from `Book_Description` where `Book_Name` like '%" + bookName + "%' or `Tags` like '%" + bookName + "%'";
+		String query = "select * from `Book_Description` where `Book_Name` like '%" + word + "%'"
+				+ " or `Tags` like '%" + word + "%'" 
+				+ " or `Author` like '%" + word + "%'";
+		
 		String JSONString = "{\"stuff\":[";
 
 		try {

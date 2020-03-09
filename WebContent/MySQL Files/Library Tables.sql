@@ -24,7 +24,7 @@ create table tags
 	book_id varchar(10),
     tag varchar(30) not null,
     
-    constraint TAG_FK foreign key (book_id) references book(id)
+    constraint TAG_FK foreign key (book_id) references book(id) on delete cascade
 );
 
 -- Table 3: Book Location
@@ -36,15 +36,16 @@ create table location
     floor integer not null,
     room integer not null,
     section varchar(30) not null,
-    shelf integer not null
+    shelf integer not null,
     
+    constraint LOC_FK foreign key (book_id) references book(id) on delete cascade
 );
 
 -- Table 4: Librarian_User
 
 create table LibUser
 (
-	id integer primary key,				-- Uses ID and Pass to login, rather than using name
+	id   varchar(10) primary key,				-- Uses ID and Pass to login, rather than using name
     name varchar(50) not null,
     pass varchar(50) not null
 );
