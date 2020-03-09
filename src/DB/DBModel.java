@@ -73,5 +73,48 @@ public class DBModel implements DBOperations{
 		
 		return false;
 	}
+
+	@Override
+	public String getBooksInJSON(String bookName) {
+		// TODO Auto-generated method stub
+		Connection c = getConnection();
+		String query = "select * from `Book_Description` where `Book_Name` like '%" + bookName + "%'";
+		String JSONString = "{\"stuff\":[";
+
+		try {
+	    Statement stmt = c.createStatement();
+	    ResultSet rs = stmt.executeQuery(query);   
+		
+	    while(rs.next())
+	        {
+	            
+				JSONString += "{";
+
+	            JSONString += "\"photo_loc\" : \"" + rs.getString("Photo_Location") + "\",";
+	            
+	            JSONString +=  "\"book_name\":\"" + rs.getString("Book_Name") + "\",";
+	            JSONString +=  "\"author\":\"" + rs.getString("Author") + "\",";
+        
+	            JSONString +=  "\"location\":\"" + "Section : " + rs.getString("Section") + ", Shelf : " + rs.getInt("Shelf") + "\",";
+	            
+	            JSONString +=  "\"tags\" : \"" + rs.getString("Tags") + "\"";
+	            
+	            JSONString += "}";
+	            
+	            if(!rs.isLast())
+	            	JSONString += ",";
+	            
+	        }
+
+	    	JSONString += "]}";
+		}
+		
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	    
+		return JSONString;
+	}
 	
 }

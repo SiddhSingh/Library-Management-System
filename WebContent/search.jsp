@@ -124,6 +124,7 @@
     		
     		req.onreadystatechange = function()
     		{
+    			
     			if(this.status == 200 && this.readyState == 4)
     				{
     					var js = JSON.parse(this.responseText);
@@ -135,7 +136,7 @@
     							ele.setAttribute("class", "card");
     							
     							var img = document.createElement("img");
-    							img.setAttribute("src", js['stuff'][i]['photo_loc']);
+    							img.setAttribute("src", 'Book_Photos/' + js['stuff'][i]['photo_loc']);
     							ele.append(img);
     							
     							var div = document.createElement("div");
@@ -153,16 +154,18 @@
     							div.append(location);
     							
     							var tags = document.createElement("p");
-    							tags.innerHTML = js['stuff'][i]['tags'].join(",");
+    							tags.innerHTML = js['stuff'][i]['tags'];
     							div.append(tags);
     							
     							ele.append(div);
     							searchResult.append(ele);
+    							
+    							console.log(ele.outerHTML);
     						}
     				}
     		};
     		
-    		req.open('GET', "searchBooks.jsp?book_name="+book_name);
+    		req.open('GET', "utils/searchBooks.jsp?book_name="+book_name);
     		req.send();
     	}
     	
@@ -197,73 +200,10 @@
     <div id="searchBar">
 			<input onchange="searchBook(this.value)" placeholder="Search Books...." id="search" />
 	</div>
-	<div>
-		<button type="button" class="collapse_button active" onclick="toggleContent(this)">Search Results</button> 
-		<div class="wrapper collapse_content" id="searchResult" style="max-height: 100%">
-		</div>
-		<button type="button" class="collapse_button active" onclick="toggleContent(this)">Recommended</button>
-    	<div class="wrapper collapse_content" style="max-height: 100%">
-
-        <%
-        	try{
-        		Class.forName("com.mysql.jdbc.Driver");	
-        	}
-        	catch(Exception e)
-        	{
-        		System.out.println(e);
-        	}
-        
-        	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Library", "aarya","aarya");
-        
-            String query = "select * from book";
-
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            
-            while(rs.next())
-                {
-					String putHTML = "";
-                    
-					putHTML += "<div class='card'>";
-
-                    putHTML += "<img src='" + rs.getString("photo_loc") + "' />";
-
-                    putHTML +=  "<div>";
-                    
-                    putHTML +=  "<h3>" + rs.getString("book_name") + "</h3>";
-                    putHTML +=  "<p>" + rs.getString("author") + "</p>";
-
-                    String location_query = "select book.book_id, concat(location.shelf, concat(' Shelf', concat(', ', concat(location.section , ' Section')))) as 'Location' from book, location where book.book_id = location.book_id" +
-                                " and book.book_id = " + rs.getString("book_id");
-           
-                    Statement location_statement = conn.createStatement();
-                    ResultSet location_result = location_statement.executeQuery(location_query);
-					location_result.next();
-                    
-                    putHTML +=  "<p>" + location_result.getString("Location") + "</p>";
-
-                    String tags_query = "select tag_name from tags where book_id = " + rs.getInt("book_id") + " limit 4";
-                    Statement tag_statement = conn.createStatement();
-                    ResultSet tags_result = tag_statement.executeQuery(tags_query);
-                    
-                    putHTML +=  "<p> Tags :- " ;
-
-                    String listOfTags = "";
-                    while(tags_result.next())
-                    	listOfTags += tags_result.getString("tag_name") + ",";
-
-                    putHTML += listOfTags.length() != 0 ? listOfTags.substring(0, listOfTags.length() - 1) : "";
-                    
-                    putHTML +=  "</p>";
-                    
-                    putHTML +=  "</div>";
-
-                    putHTML +=  "</div>";
-                    
-                    out.println(putHTML);
-                }
-        %>
-    </div>
+		<div>
+			<button type="button" class="collapse_button active" onclick="toggleContent(this)">Search Results</button> 
+			<div class="wrapper collapse_content" id="searchResult" style="max-height: 100%"></div>
+    	</div>
     </div>
 </body>
 
