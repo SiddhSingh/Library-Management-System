@@ -4,8 +4,10 @@ var r = window.SpeechRecognition;
 var rec = new r();
 
 rec.onresult = function(e) {
-    document.getElementById("search").value = (e.results[e.resultIndex][0].transcript);
-    console.log((e.results[e.resultIndex][0].transcript));
+	var bookName = e.results[e.resultIndex][0].transcript;
+    document.getElementById("search").value = bookName;
+    
+    searchBook(bookName);
 }
 
 rec.continuous = true;
@@ -21,6 +23,5 @@ function vSearch(button) {
     setTimeout(() => {
     	rec.stop();
         button.disabled = false;
-        button.submit();
      }, 4000);
 }
