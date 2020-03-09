@@ -78,7 +78,7 @@ public class DBModel implements DBOperations{
 	public String getBooksInJSON(String bookName) {
 		// TODO Auto-generated method stub
 		Connection c = getConnection();
-		String query = "select * from `Book_Description` where `Book_Name` like '%" + bookName + "%'";
+		String query = "select * from `Book_Description` where `Book_Name` like '%" + bookName + "%' or `Tags` like '%" + bookName + "%'";
 		String JSONString = "{\"stuff\":[";
 
 		try {
