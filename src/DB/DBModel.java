@@ -57,12 +57,14 @@ public class DBModel implements DBOperations{
 										 + b.getPhoto_loc()  + "'," 
 										 + b.getFloor()      + "," 
 										 + b.getRoom()  	 + ",'" 
-										 + b.getSection()	 + "," 
+										 + b.getSection()	 + "'," 
 										 + b.getShelf()  	 + ",'" 
 										 + b.getTags()	 	 + "')";
+		System.out.println(query);
 		try {
 			Statement stmt = c.createStatement();
-			return stmt.execute(query);
+			stmt.execute(query);
+			return true;
 		}
 		catch(Exception e)
 		{

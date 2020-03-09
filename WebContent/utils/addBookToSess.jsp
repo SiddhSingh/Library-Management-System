@@ -14,6 +14,16 @@
 	
 	session.setAttribute("Book", b);
 	
-	System.out.println(session.getAttribute("Book"));
-	
 %>
+
+<html>
+	<head>
+		<title> Submit Book Cover </title>
+	</head>
+	<body>
+		<form action="addBookToDB.jsp" method="post" name="cover" enctype="multipart/form-data">
+			Book Cover : <input type="file" name="photoLoc"/>
+			<button>Submit</button>
+		</form>
+	</body>
+</html>

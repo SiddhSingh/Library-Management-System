@@ -37,7 +37,7 @@
 	if(uploadSuccessful)
 	{
 		Book b = (Book)session.getAttribute("Book");
-		b.setPhoto_loc(FileLocation  + File.separator + name);
+		b.setPhoto_loc(name);
 		
 		if(DBModel.getInstance().addToDatabase(b))
 			out.println("Added to Database");
