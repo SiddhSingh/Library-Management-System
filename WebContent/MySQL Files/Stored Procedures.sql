@@ -47,8 +47,6 @@ delimiter \\
         insert into location(`book_id`, `floor`, `room`, `section`, `shelf`)
         values (book_id, floor, room, section, shelf);
         
-        select tags;
-		select @tag_list_query;
 		prepare insert_tags from @tag_list_query;
         execute insert_tags;
         
