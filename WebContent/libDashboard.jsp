@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
 <%
-	if(session.getAttribute("username") == null)
+	if(session.getAttribute("user") == null)
 		response.sendRedirect("login.jsp");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,6 +12,6 @@
 <title> Dashboard </title>
 </head>
 <body>
-	<div> Welcome, <%=(String)session.getAttribute("username") %></div>
+	<div> Welcome, <%=(String)session.getAttribute("user") %></div>
 </body>
 </html>

@@ -1,5 +1,8 @@
 <%@page import="Book.Book"%>
 <%
+	if(session.getAttribute("user") != null)
+		response.sendRedirect("../login.jsp");
+
 	Book b = new Book();
 	
 	b.setName(request.getParameter("name"));

@@ -8,6 +8,9 @@
 <%@page import="org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory"%>
 <%@page import="org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload"%>
 <%
+	if(session.getAttribute("user") == null)
+		response.sendRedirect("../login.jsp");
+
 	final String FileLocation = pageContext.getServletContext().getInitParameter("file-upload");
 	boolean uploadSuccessful = false;
 	String name = "";

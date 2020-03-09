@@ -116,5 +116,32 @@ public class DBModel implements DBOperations{
 	    
 		return JSONString;
 	}
+
+	@Override
+	public String loginValidation(String username, String password) {
+		// TODO Auto-generated method stub
+		Connection c = getConnection();
+		String query = "select id as `username`, name ,pass as `password` from libuser where id='" + username + "' and pass='" + password + "'";
+		
+		try {
+			Statement stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while(rs.next())
+			{
+				if(rs.getString("username").equals(username) && rs.getString("password").equals(password))
+					return rs.getString("name");
+				else
+					return null;
+			}
+		}
+		
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
+		return null;
+	}
 	
 }

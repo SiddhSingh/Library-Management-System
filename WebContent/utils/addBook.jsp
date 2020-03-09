@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%
+	if(session.getAttribute("user") == null)
+		response.sendRedirect("../login.jsp");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 
 </head>
 <body>
-	<form action="utils/addBookToSess.jsp" method="post" name="bookData">
+	<form action="addBookToSess.jsp" method="post" name="bookData">
 		<table>
 			<tr><td>Book Name</td>				<td><input type="text" name="name" id="bookName"/></td></tr>
 			<tr><td>Author Name</td>			<td><input type="text" name="author" id="author" /></td></tr>
