@@ -12,7 +12,7 @@ public class Book {
 	int shelf;
 	
 	String tags;
-
+		
 	public String getName() {
 		return name;
 	}

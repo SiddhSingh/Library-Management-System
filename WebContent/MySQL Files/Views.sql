@@ -15,7 +15,7 @@ create view `Book_Description` as
         location.room 		as `Room_No`,
         location.section 	as `Section`,
         location.shelf 		as `Shelf`,
-        (select group_concat(tag) from tags where book_id = book.id) as `Tags`
+        (select group_concat(tag) from tags where book.id = tags.book_id) as `Tags`
 	from 
 		book, location
 	where

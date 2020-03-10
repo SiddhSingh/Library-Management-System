@@ -35,13 +35,12 @@ function searchBook(book_name) {
 				div.append(location);
 
 				var tags = document.createElement("p");
-				tags.innerHTML = js['stuff'][i]['tags'];
+				tags.innerHTML = js['stuff'][i]['tags'].replace(/,/g, ", ");
 				div.append(tags);
 
 				ele.append(div);
 				searchResult.append(ele);
 
-				console.log(ele.outerHTML);
 			}
 		}
 	};
