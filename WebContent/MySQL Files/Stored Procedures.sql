@@ -4,6 +4,9 @@ use library;
 
 -- Trigger 1: Inserting into book
 drop procedure if exists `New_Book`;
+drop function if exists `Issue`;
+drop function if exists `Return`;
+
 delimiter \\
 	
 	create procedure `New_Book`
@@ -21,7 +24,7 @@ delimiter \\
     
     begin
     
-		declare book_id varchar(10) default left(uuid(), 10);
+		declare book_id varchar(10) default left(uuid(), 5);
         
         set @tag_list_query = concat(
 									"insert into tags values('", 
@@ -49,11 +52,62 @@ delimiter \\
         
 		prepare insert_tags from @tag_list_query;
         execute insert_tags;
-        
-        
     end
 	
 \\
 
-delimiter ;
+create function `Issue`
+	(
+		book_id varchar(5),
+        student_id varchar(50)
+    )
+    returns
+		boolean
+	begin
+		declare avail boolean;
+        
+		select 
+			available into avail 
+			from `Book` 
+            where id = book_id;
+            
+		if avail = 0 then
+			return false;
+		else
+			update `Book` set available = false where id = book_id;
+            insert into `Log` values(book_id, 0, student_id);
+		end if;
+        
+        return true;
+			
+    end
+    
+\\
 
+create function `Return`
+	(
+		book_id varchar(5),
+        student_id varchar(50)
+    )
+    returns
+		boolean
+	begin
+		declare avail boolean;
+        
+		select 
+			available into avail 
+			from `Book` 
+            where id = book_id;
+            
+		if avail = 1 then
+			return false;
+		else
+			update `Book` set available = true where id = book_id;
+            insert into `Log` values(book_id, 1, student_id);
+            
+		end if;
+        
+		return true;
+    end
+    
+\\

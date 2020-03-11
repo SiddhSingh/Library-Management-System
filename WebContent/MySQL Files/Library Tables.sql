@@ -8,7 +8,7 @@ use Library;
 -- Table 1: Book
 create table book
 (
-	id varchar(10) primary key,
+	id varchar(5) primary key,
     name varchar(100) not null,
     author varchar(50) not null, 
     
@@ -21,7 +21,7 @@ create table book
 
 create table tags
 (
-	book_id varchar(10),
+	book_id varchar(5),
     tag varchar(30) not null,
     
     constraint TAG_FK foreign key (book_id) references book(id) on delete cascade
@@ -31,7 +31,7 @@ create table tags
 
 create table location
 (
-	book_id varchar(10) primary key,
+	book_id varchar(5) primary key,
     
     floor integer not null,
     room integer not null,
@@ -74,7 +74,7 @@ create table student
 
 create table Log
 (
-	book_id varchar(10) not null,
+	book_id varchar(5) not null,
     t_id integer not null,
     student_id varchar(50) not null,
     

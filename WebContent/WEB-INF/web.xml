@@ -11,6 +11,6 @@
   </welcome-file-list>
   <context-param>
   	<param-name>file-upload</param-name>
-  	<param-value>E:\Eclipse Projects\Library-Management-System\Library-Management-System\WebContent\Book_Photos</param-value>
+  	<param-value>E:\Book_Photos</param-value>
   </context-param>
 </web-app>

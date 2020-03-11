@@ -24,7 +24,9 @@
 				if(!item.isFormField())
 				{
 					name = UUID.randomUUID().toString().substring(0, 30) + item.getName().substring(item.getName().lastIndexOf('.'));
-					item.write(new File(FileLocation  + File.separator + name));
+					File f = new File(FileLocation  + File.separator + name);
+					f.createNewFile();
+					item.write(f);
 				}
 			}
 			
@@ -42,10 +44,15 @@
 		Book b = (Book)session.getAttribute("Book");
 		b.setPhoto_loc(name);
 		
+		String outHTML = "<div style='text-align: center'>";
 		if(DBModel.getInstance().addToDatabase(b))
-			out.println("Added to Database");
+			outHTML += ("Added to Database");
 		else
-			out.println("Couldn't add to Database");
+			outHTML += ("Couldn't add to Database");
+		
+		outHTML += "</div>";
+		
+		out.println(outHTML);
 	}
 	
 %>

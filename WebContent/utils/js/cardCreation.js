@@ -45,7 +45,7 @@ function searchBook(book_name) {
 		}
 	};
 
-	req.open('GET', "utils/searchBooks.jsp?book_name=" + book_name);
+	req.open('GET', "utils/searchBooks.jsp?book_name=" + book_name.replace(" ", "%"));
 	req.send();
 }
 

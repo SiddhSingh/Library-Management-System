@@ -148,5 +148,49 @@ public class DBModel implements DBOperations{
 		
 		return null;
 	}
+
+	@Override
+	public int issueReturnBook(String bookID, String studentID, boolean issue) {
+		// TODO Auto-generated method stub
+		/*
+		 *  0 -> Book Transaction Successful
+		 *  1 -> Book Transaction Failed
+		 *  2 -> Book Transaction Error
+		 * 
+		 */
+		Connection c = getConnection();		
+		String query = "";
+		
+		if(issue)
+			query = "select `Issue`('" + bookID + "', '" + studentID + "') as `Issued`";
+		
+		else
+			query = "select `Return`('" + bookID + "', '" + studentID + "') as `Returned`";
+		
+		try {
+			
+			Statement stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while(rs.next())
+			{
+				if(rs.getBoolean(issue ? "Issued" : "Returned"))
+					return 0;
+				
+				else
+					return 1;
+			}
+			
+		}
+		
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return 2;
+		}
+		
+		return 0;
+	}
+
 	
 }

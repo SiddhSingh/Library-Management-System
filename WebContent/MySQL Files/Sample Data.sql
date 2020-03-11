@@ -2,12 +2,24 @@ use library;
 
 -- Sample Data
 
+-- Students
+-- truncate student;
+insert into student values
+('17BD1A058E', 'Aarya Devarla', 'devarlaaarya@gmail.com', '9110582069'),
+('17BD1A059H', 'Vishnu Gupthaa', 'pulihoraja@balayya.com', '7110142069');
+
 -- Librarian - Admin
-truncate libuser;
+-- truncate libuser;
 insert into libuser values ('God', 'root', 'admin');
 
--- Books
+-- Transaction
+-- truncate TypeOfTransaction;
+insert into TypeOfTransaction 
+values
+(0, 'ISSUED'),
+(1, 'RETURNED');
 
+-- Books
 call New_Book('One Piece', 'Eichiro Oda', '1.jpg', 1, 1, 'Comics/Manga', 1, 'Action,Adventure,Pirate,Comedy,Drama');
 call New_Book('Dragon Ball-Z', 'Akira Toriyama', '3.jpg', 1, 1, 'Comics/Manga', 1, 'Action,Comedy,Dragons');
 call New_Book('My Hero Academia', 'Horikoshi Kouhei', '4.jpg', 1, 1, 'Comics/Manga', 1, 'Action,Comedy,Superpowers,All for One,One for All');

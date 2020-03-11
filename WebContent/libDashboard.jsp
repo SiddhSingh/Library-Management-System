@@ -5,13 +5,49 @@
 	if(session.getAttribute("user") == null)
 		response.sendRedirect("login.jsp");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title> Dashboard </title>
+    <title> Library Dashboard </title>
+    <link href="utils/css/dashboard.css" type="text/css" rel="stylesheet" />
+    <script src="utils/js/dashboard.js"></script>
 </head>
+
 <body>
-	<div> Welcome, <%=(String)session.getAttribute("user") %></div>
+    <div id="container">
+        <div id="header">
+            <div>Welcome, <%=(String)session.getAttribute("user") %></div>
+            <div id="logout">
+                <a href="utils/logout.jsp">
+                    Logout
+                </a>
+            </div>
+        </div>
+        <div id="nav">
+            <div onclick="fetch_content(this.innerHTML)">
+                Add Book
+            </div>
+            <div onclick="fetch_content(this.innerHTML)">                
+                Issue
+            </div>
+            <div onclick="fetch_content(this.innerHTML)">
+                Return
+            </div>
+            <div>
+                 View Student Transaction
+            </div>
+        </div>
+        <div id="content">
+            <div>
+                Click to perform an action
+            </div>
+        </div>
+    </div>
 </body>
+
+</html>
+
+</html>
+
 </html>

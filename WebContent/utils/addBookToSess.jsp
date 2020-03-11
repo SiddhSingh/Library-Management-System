@@ -1,6 +1,6 @@
 <%@page import="Book.Book"%>
 <%
-	if(session.getAttribute("user") != null)
+	if(session.getAttribute("user") == null)
 		response.sendRedirect("../login.jsp");
 
 	Book b = new Book();
@@ -18,15 +18,7 @@
 	session.setAttribute("Book", b);
 	
 %>
-
-<html>
-	<head>
-		<title> Submit Book Cover </title>
-	</head>
-	<body>
-		<form action="addBookToDB.jsp" method="post" name="cover" enctype="multipart/form-data">
-			Book Cover : <input type="file" name="photoLoc"/>
-			<button>Submit</button>
-		</form>
-	</body>
-</html>
+<form action="addBookToDB.jsp" method="post" name="cover" enctype="multipart/form-data">
+	Book Cover : <input type="file" name="photoLoc" id="photoLoc"/>
+	<button>Submit</button>
+</form>
