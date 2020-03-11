@@ -1,6 +1,8 @@
 package DB;
 
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
 import Book.Book;
 
@@ -190,6 +192,30 @@ public class DBModel implements DBOperations{
 		}
 		
 		return 0;
+	}
+
+	@Override
+	public List<String> studentTransaction(String studentID) {
+		// TODO Auto-generated method stub
+		LinkedList<String> result = new LinkedList<>();
+		
+		String query = "call `Student_Transaction`('" + studentID + "')";
+		Connection c = getConnection();
+		
+		try {
+			Statement stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while(rs.next())
+				result.addLast(rs.getString(1));
+		}
+		
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
+		return result;
 	}
 
 	

@@ -8,7 +8,7 @@ interface Params {
 	String PORT = "3306";
 
 	String USER = "root";
-	String PASS = "aarya";
+	String PASS = "aarya2013";
 	
 	String DATABASE = "Library";
 
