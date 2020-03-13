@@ -6,7 +6,7 @@ function validation() {
 	var form = document.loginForm;
 
 	var req = new XMLHttpRequest();
-	var url = './utils/validate.jsp';
+	var url = 'validate.goto';
 	var param = 'username=' + username + '&password=' + password;
 
 	req.onreadystatechange = function() {

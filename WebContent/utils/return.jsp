@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%
 	if(session.getAttribute("user") == null)
-		response.sendRedirect("../login.jsp");
+		response.sendRedirect("login.goto");
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div>
-		<form action="returnBook.jsp" method="post">
+		<form action="return_book_result.goto" method="post">
 			<table>
 				<tr><td>Book No:</td><td><input name="bookID" /></tr>
 				<tr><td>Student ID:</td><td><input name="studentID" /></tr>

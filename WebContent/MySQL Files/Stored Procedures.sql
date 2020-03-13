@@ -6,6 +6,7 @@ use library;
 drop procedure if exists `New_Book`;
 drop function if exists `Issue`;
 drop function if exists `Return`;
+drop procedure if exists `Student_Transaction`;
 
 delimiter \\
 	
@@ -75,7 +76,7 @@ create function `Issue`
 			return false;
 		else
 			update `Book` set available = false where id = book_id;
-            insert into `Log` values(book_id, 0, student_id);
+            insert into `Log` values(book_id, 0, student_id, now());
 		end if;
         
         return true;
@@ -103,11 +104,33 @@ create function `Return`
 			return false;
 		else
 			update `Book` set available = true where id = book_id;
-            insert into `Log` values(book_id, 1, student_id);
+            insert into `Log` values(book_id, 1, student_id, now());
             
 		end if;
         
 		return true;
+    end
+    
+\\
+
+create procedure `Student_Transaction`
+	(
+		student_id varchar(30)
+	)
+    begin
+		select 
+			concat("Book ID : ", 
+					concat(book_id, 
+							concat(" ",
+									concat( (select name from `TypeOfTransaction` where id = `Log`.t_id),
+											concat(" on ", on_date)
+											)
+                                )
+                            )
+					) as `Transaction Details`
+            from  `Log`
+            where `Log`.student_id = student_id
+            order by on_date desc;
     end
     
 \\

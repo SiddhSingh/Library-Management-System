@@ -3,7 +3,7 @@
     
 <%
 	if(session.getAttribute("user") == null)
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login.goto");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@
         <div id="header">
             <div>Welcome, <%=(String)session.getAttribute("user") %></div>
             <div id="logout">
-                <a href="utils/logout.jsp">
+                <a href="logout.goto">
                     Logout
                 </a>
             </div>

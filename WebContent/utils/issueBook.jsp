@@ -1,7 +1,7 @@
 <%@page import="DB.DBModel"%>
 <%
 	if(session.getAttribute("user") == null)
-		response.sendRedirect("../login.jsp");
+		response.sendRedirect("login.goto");
 
 	String bookID = request.getParameter("bookID");
 	String studentID = request.getParameter("studentID");

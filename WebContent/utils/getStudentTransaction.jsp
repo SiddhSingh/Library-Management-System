@@ -2,7 +2,7 @@
 <%@page import="java.util.List"%>
 <%
 	if(session.getAttribute("user") == null)
-		response.sendRedirect("../login.jsp");
+		response.sendRedirect("login.goto");
 
 	if(request.getParameter("studentID") == null)
 		out.println("Provide Student ID");

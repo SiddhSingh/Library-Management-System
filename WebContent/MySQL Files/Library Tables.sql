@@ -66,7 +66,7 @@ create table student
     name varchar(50) not null,
     
     email varchar(60) not null,
-    phno integer not null
+    phno varchar(10) not null
 );
 
 
@@ -77,6 +77,7 @@ create table Log
 	book_id varchar(5) not null,
     t_id integer not null,
     student_id varchar(50) not null,
+    on_date timestamp not null,
     
     constraint Log_Book_FK foreign key (book_id) references book(id),
     constraint Log_TOT_FK foreign key (t_id) references TypeOfTransaction(id),

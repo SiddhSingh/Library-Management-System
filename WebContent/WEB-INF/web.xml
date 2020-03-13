@@ -2,6 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>LibraryManagementSystem</display-name>
   <welcome-file-list>
+  	<welcome-file>/search</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -10,7 +11,135 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-  	<param-name>file-upload</param-name>
-  	<param-value>E:\Book_Photos</param-value>
+    <param-name>file-upload</param-name>
+    <param-value>E:\Eclipse Stuff\Library_Management_System\WebContent\Book_Photos</param-value>
   </context-param>
+  <servlet>
+  	<servlet-name>Login</servlet-name>
+  	<jsp-file>/login.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Librarian Dashboard</servlet-name>
+  	<jsp-file>/libDashboard.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Search</servlet-name>
+  	<jsp-file>/search.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Add Book</servlet-name>
+  	<jsp-file>/utils/addBook.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Add Photo of Book</servlet-name>
+  	<jsp-file>/utils/addBookToSess.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Add Book to DB</servlet-name>
+  	<jsp-file>/utils/addBookToDB.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Get Student Transactions</servlet-name>
+  	<jsp-file>/utils/getStudentTransaction.jsp</jsp-file>
+  </servlet>  
+  <servlet>
+  	<servlet-name>Issue</servlet-name>
+  	<jsp-file>/utils/issue.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Issue Result</servlet-name>
+  	<jsp-file>/utils/issueBook.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Logout</servlet-name>
+  	<jsp-file>/utils/logout.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Return</servlet-name>
+  	<jsp-file>/utils/return.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Return Result</servlet-name>
+  	<jsp-file>/utils/returnBook.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Search Book</servlet-name>
+  	<jsp-file>/utils/searchBook.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Student Transaction Details</servlet-name>
+  	<jsp-file>/utils/studentTransactions.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Validate</servlet-name>
+  	<jsp-file>/utils/validate.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>Page Not Found</servlet-name>
+  	<jsp-file>/utils/pageNotFound.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Login</servlet-name>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Librarian Dashboard</servlet-name>
+  	<url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Search</servlet-name>
+  	<url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Add Book</servlet-name>
+  	<url-pattern>/addNewBook</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Add Photo of Book</servlet-name>
+  	<url-pattern>/newBookPhoto</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Add Book to DB</servlet-name>
+  	<url-pattern>/bookResult</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Get Student Transactions</servlet-name>
+  	<url-pattern>/studentTransactions</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Issue</servlet-name>
+  	<url-pattern>/issue</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Issue Result</servlet-name>
+  	<url-pattern>/issueResult</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Logout</servlet-name>
+  	<url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Return</servlet-name>
+  	<url-pattern>/return</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Return Result</servlet-name>
+  	<url-pattern>/returnResult</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Search Book</servlet-name>
+  	<url-pattern>/books</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Student Transaction Details</servlet-name>
+  	<url-pattern>/transactionDetails</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Validate</servlet-name>
+  	<url-pattern>/validate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Page Not Found</servlet-name>
+  	<url-pattern>/pageNotFound</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,4 +1,4 @@
-<form action="addBookToSess.jsp" method="post" name="bookData">
+<form action="add_photo_of_book.goto" method="post" name="bookData">
 		<table>
 			<tr><td>Book Name</td>				<td><input type="text" name="name" id="bookName"/></td></tr>
 			<tr><td>Author Name</td>			<td><input type="text" name="author" id="author" /></td></tr>

@@ -5,14 +5,6 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="org.apache.tomcat.util.json.JSONParser"%>
 <%
-	try{
-		Class.forName("com.mysql.jdbc.Driver");
-	}
-	catch(Exception e)
-	{
-		System.out.println(e);
-	}
-
 	String book_name = request.getParameter("book_name");
 	if(!(book_name == null || book_name == ""))
 	{

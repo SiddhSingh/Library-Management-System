@@ -16,8 +16,8 @@
 
 <body>
     <div id="searchBar">
-			<input onchange="searchBook(this.value)" onsubmit="searchBook(this.value)" placeholder="Search Books...." id="search" />
-			<button type="button" onclick="vSearch(this)"> Voice Search </button>
+		<input onchange="searchBook(this.value)" onsubmit="searchBook(this.value)" placeholder="Search Books...." id="search" />
+		<button type="button" onclick="vSearch(this)"> Voice Search </button>
 	</div>
 		<div>
 			<button type="button" class="collapse_button active" onclick="toggleContent(this)">Search Results</button>

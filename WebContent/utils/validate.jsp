@@ -6,7 +6,6 @@
 	if(username != null && password != null)
 	{
 		String name = DBModel.getInstance().loginValidation(username, password);
-		System.out.println(name);
 		if(name != null)
 		{
 			session.setAttribute("user", name);

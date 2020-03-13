@@ -9,7 +9,7 @@
 <%@page import="org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload"%>
 <%
 	if(session.getAttribute("user") == null)
-		response.sendRedirect("../login.jsp");
+		response.sendRedirect("login.goto");
 
 	final String FileLocation = pageContext.getServletContext().getInitParameter("file-upload");
 	boolean uploadSuccessful = false;

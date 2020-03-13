@@ -1,6 +1,6 @@
 <%
 	if(session.getAttribute("user") != null)
-		response.sendRedirect("libDashboard.jsp");
+		response.sendRedirect("dashboard.goto");
 %>
 <!doctype html>
 <html>
@@ -10,7 +10,7 @@
 		<script src="utils/js/loginValidation.js"></script>
 	</head>
 	<body>
-		<form name="loginForm" action="libDashboard.jsp" method="post">
+		<form name="loginForm" action="dashboard.goto" method="post">
 			<div class="centering">
 				<div class="container" id="login">
 					<input type="text"     placeholder="Username..." id="username" name="username" onkeydown="r()"/>

@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%
 	if(session.getAttribute("user") == null)
-		response.sendRedirect("../login.jsp");
+		response.sendRedirect("login.goto");
 %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div style="display: flex; justify-content: center">
-		<form action="getStudentTransaction.jsp" method="get">
+		<form action="get_student_transaction.goto" method="get">
 			Student ID : <input name="studentID" />
 			<button> Get Transaction Log </button>
 		</form>
